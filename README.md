@@ -74,7 +74,7 @@ I called it *"Framework Oriented Programming"* and brought the joyfulness of pla
 ### 1. Single responsibility
 **Based on the 1st SOLID principle: Single Responsibility**
 
-SOLID principles also apply to a framework. Frameworks should satisfy the single responsibility framework. They should have only one responsibility. If any of your designed frameworks might have multiple responsibility, think about slicing it in more layers.
+SOLID principles also apply to a framework. Frameworks should satisfy the single responsibility principle. They should have only one responsibility. If any of your designed frameworks might have multiple responsibility, think about slicing it in more layers.
 
 > For example, if we have an API interaction layer, and it offers not only the wrapper to the Foundation Networking layer but the requests  factories and models *(tied to your project use case)* think about splitting them into a `Networking` and an `API` frameworks.
 
@@ -92,7 +92,7 @@ Design your frameworks graph as a stack with multiple layers where the applicati
 > Design your stack dependencies vertically
 
 ### 3. Lower in the stack, fewer dependencies
-The number of external dependencies should be directly proportional with the level of the framework in the stack *(i.e, the lower in the stack the less the external dependencies it should have)*. Dependencies of lower levels are also dependencies of upper levels, thus, the more dependencies we we have in these levels the more complex the graph and the setup becomes. Figure out if your Framework really needs that external dependency that you are thinking about. Most of the times we end up checking out dependencies to use only a few components from them. Checkout only these components/extensions/classes that you really need, or implement them by your own whenever it's possible.
+The number of external dependencies should be directly proportional with the level of the framework in the stack *(i.e, the lower in the stack the less the external dependencies it should have)*. Dependencies of lower levels are also dependencies of upper levels, thus, the more dependencies we have in these levels the more complex the graph and the setup becomes. Figure out if your Framework really needs that external dependency that you are thinking about. Most of the times we end up checking out dependencies to use only a few components from them. Checkout only these components/extensions/classes that you really need, or implement them by your own whenever it's possible.
 
 > Reduce external dependencies as you go lower in the stack.
 
@@ -105,7 +105,7 @@ This makes replacement in the future easier. For example if you used another per
 > Don't expose lower dependencies to upper levels. Wrap them!
 
 ### 5. Internal by default
-If you're using **Swift**, congrats :tada:, you get this for free. All components are by default `internal` and they won't be visible form other frameworks unless you specify it with the `public` modifier. As soon as you start *"consuming"* your frameworks you'll figure out which components have to be `public`. In case of **Objective-C** keep the headers private in the target headers configuration and make `public` only these that must be visible. When a component is `public` the developers that are depending on that frameworks feel the *"freedom"* and *"flexibility"* that leads to a misuse and coupling with private code.
+If you're using **Swift**, congrats :tada:, you get this for free. All components are by default `internal` and they won't be visible from other frameworks unless you specify it with the `public` modifier. As soon as you start *"consuming"* your frameworks you'll figure out which components have to be `public`. In case of **Objective-C** keep the headers private in the target headers configuration and make `public` only these that must be visible. When a component is `public` the developers that are depending on that frameworks feel the *"freedom"* and *"flexibility"* that leads to a misuse and coupling with private code.
 
 > Make framework components internal by default and make public only these needed.
 
@@ -116,11 +116,11 @@ Design your Frameworks components based on the open/closed SOLID principle. Allo
 
 With the final keyword you prevent overrides from your Frameworks and force the developers to look for extension alternatives other than overriding.
 
-> Make your Frameworks open to extension but closed to modifications.
+> Make your Frameworks open to extensions but closed to modifications.
 
 
 ### 7. Framework models
-Each framework should implement their own models. If you share models between multiple frameworks you are coupling these frameworks to the frameworks that provide these models. That said, a `Networking` framework should have defined models representing API responses, and a `Database` framework should have their own `Database` models. If these models are combined in a business logic framework, `Core` then they should be wrapped into different models. You
+Each framework should implement their own models. If you share models between multiple frameworks you are coupling these frameworks to the frameworks that provide these models. That said, a `Networking` framework should have defined models representing API responses, and a `Database` framework should have their own `Database` models. If these models are combined in a business logic framework, `Core` then they should be wrapped into different models.
 
 > Each framework defines its own models
 
@@ -314,5 +314,5 @@ If you want to contribute with the paper, you can:
 - **Awesome iOS** - [Link](https://github.com/vsouza/awesome-ios)
 - **How to create a Framework for iOS** - [Link](https://www.raywenderlich.com/65964/create-a-framework-for-ios)
 - **Framework vs Library** - [Link](http://www.knowstack.com/framework-vs-library-cocoa-ios/)
-- **Static and Dynamic LIbraries** - [Link](https://pewpewthespells.com/blog/static_and_dynamic_libraries.html)
+- **Static and Dynamic Libraries** - [Link](https://pewpewthespells.com/blog/static_and_dynamic_libraries.html)
 - **The Unofficial Guide to xccconfig files** - [Link](https://pewpewthespells.com/blog/xcconfig_guide.html)
